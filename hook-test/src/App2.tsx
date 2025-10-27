@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useLayoutEffect, useState } from "react"
 
 async function queryData () {
   const data = await new Promise((resolve) => {
@@ -79,13 +79,26 @@ function App () {
     const timer = setInterval(() => {
       console.log(num)
     }, 1000)
-    console.log('start useEffect5 timer~ timer:', timer)
+    console.log('start useEffect5: ', timer)
     return () => {
       // 这里清理函数的执行是在effect重新运行之前执行的 或者在组件销毁时执行
       console.log('clear useEffect5 timer~ timer:', timer)
       clearInterval(timer)
     }
   }, [num]) // 这里只在num变化时重新运行Effect 启动新的定时器 如果num不变化 则不会重新启动定时器
+
+
+  useLayoutEffect(() => {
+    // 这里的useLayoutEffect会在浏览器渲染之前执行
+    console.log('useLayoutEffect')
+    return () => {
+      console.log('clear useLayoutEffect1')
+    }
+  }, [num])
+
+  // 综上 绝大多数情况下 用useEffect，因为他能避免逻辑执行时间过长导致的页面卡顿，但如果碰到闪动问题 可以使用useLayoutEffect，
+  // 但要注意effect逻辑不要执行时间太长（一般超过50ms的任务就被称作是长任务，会阻塞渲染，导致掉帧）
+
   return (
     <>
       <button onClick={() => setNum(num => num + 1)}>Click me {num}</button>

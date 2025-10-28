@@ -1,3 +1,4 @@
+// 记住 ref 的特点是修改了 current 属性不会导致渲染。
 import { useEffect, useRef, useState } from "react"
 function App () {
   const inputRef = useRef<HTMLInputElement>(null)

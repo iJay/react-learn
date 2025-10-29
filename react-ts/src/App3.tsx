@@ -9,10 +9,10 @@ function App () {
   // useEffect 和 useLayoutEffect 没有类型参数
 
   // 保存dom引用的时候
-  const ref = useRef<HTMLInputElement>(undefined)
+  const ref = useRef<HTMLInputElement>(null)
 
   // 保存别的内容的时候
-  const numRef = useRef<{ num: number}>(null)
+  const numRef = useRef<{ num: number}>(undefined)
 
   numRef.current = { num: 999 }
 

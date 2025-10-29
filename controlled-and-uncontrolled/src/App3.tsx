@@ -96,7 +96,7 @@ function Calendar(props: CalendarProps) {
   
   return (
     <>
-      <h4>{mergedValue.toLocaleDateString()}</h4>
+      <h4>{mergedValue?.toLocaleDateString()}</h4>
       <div onClick={() => { changeValue(new Date('2025-10-27'))}}>2025-10-27</div>
       <div onClick={() => { changeValue(new Date('2025-10-28'))}}>2025-10-28</div>
       <div onClick={() => { changeValue(new Date('2025-10-29'))}}>2025-10-29</div>

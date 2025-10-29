@@ -1,3 +1,5 @@
+// useImperativeHandle + ts 使用
+
 import { useEffect, useImperativeHandle, useRef } from "react";
 
 interface AaaProps {

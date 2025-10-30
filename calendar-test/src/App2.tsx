@@ -21,6 +21,7 @@ function App () {
 function Test () {
   return (
     <>
+      {/* 非受控模式 */}
       <Calendar defaultValue={new Date()} onChange={(newDate) => {
         alert(`${newDate.toLocaleDateString()}`)
       }}/>

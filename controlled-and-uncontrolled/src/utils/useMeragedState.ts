@@ -1,4 +1,4 @@
-import { useCallback, useLayoutEffect, useRef, useState, type Dispatch, type SetStateAction } from "react"
+import { useCallback, useEffect, useRef, useState, type Dispatch, type SetStateAction } from "react"
 
 function useMeragedState<T> (defaultStateValue: T, props: {
   defaultValue?: T,
@@ -37,7 +37,7 @@ function useMeragedState<T> (defaultStateValue: T, props: {
 
   const isFirstRender = useRef(true)
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (propsValue === undefined && !isFirstRender.current) {
       setStateValue(propsValue!)
     }

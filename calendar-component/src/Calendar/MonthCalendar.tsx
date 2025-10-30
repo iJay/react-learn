@@ -20,7 +20,7 @@ function getAllDays(date: Dayjs) {
   const day = startDate.day()
   
 
-  // 不管这个月有多少天，我们日历都是固定 6 * 7 个日期
+  // 不管这个月有多少天，日历都是固定 6 * 7 个日期
   const daysInfo: Array<{ date: Dayjs, currentMonth: boolean }> = new Array(6 * 7)
 
   // 填充上个月的天数

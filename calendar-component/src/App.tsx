@@ -1,15 +1,20 @@
-import dayjs from 'dayjs';
-import Calendar from './Calendar'
+import dayjs, { Dayjs } from 'dayjs';
+import Calendar from './Calendar/index2'
+import { useState } from 'react';
 
 function App() {
+  // const [date, setDate] = useState<Dayjs>(dayjs())
+  // function onChange(date: Dayjs) {
+  //   setDate(date)
+  //   console.log(date)
+  // }
   return (
     <div className="App">
       <Calendar
         locale="zh-CN"
-        value={dayjs('2023-11-08')}
-        onChange={(date) => {
-          alert(date.format('YYYY-MM-DD'));
-        }}
+        defaultValue={dayjs().subtract(1, 'month')}
+        // value={date}
+        // onChange={onChange}
         className="custom-calendar"
         style={{ backgroundColor: '#fff'}}
         // dateRender={(currentDate) => {

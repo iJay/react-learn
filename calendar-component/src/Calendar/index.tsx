@@ -8,13 +8,14 @@ import LocaleContext from './LocaleContext'
 import dayjs from 'dayjs'
 
 export interface CalendarProps {
-  value: Dayjs;
+  value?: Dayjs;
+  defaultValue?: Dayjs;
   className?: string | string[];
   style?: React.CSSProperties;
   dateRender?: (currentDate: Dayjs) => ReactNode;
   dateInnerContent?: (currentDate: Dayjs) => ReactNode;
   locale?: string,
-  onChange: (date: Dayjs) => void
+  onChange?: (date: Dayjs) => void
 }
 
 function Calendar(props: CalendarProps) {

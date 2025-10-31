@@ -36,6 +36,7 @@ function Calendar(props: CalendarProps) {
   function selectHandler(date: Dayjs) {
     changeValue(date)
   }
+  
   function prevMonthHandler () {
     setCurMonth(curMonth.subtract(1, 'month'))
   }

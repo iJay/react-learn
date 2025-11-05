@@ -28,6 +28,7 @@ function CopyToClipboard (props: CopyToClipboardProps) {
     const result = copy(text, options)
 
     if (onCopy) {
+      // 触发外部的点击事件
       onCopy(text, result)
     }
 

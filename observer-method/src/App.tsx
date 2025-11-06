@@ -12,7 +12,7 @@ function App() {
               console.log(item.target, item.intersectionRatio)
           })
       }, {
-      threshold: 0.5
+      threshold: [0.5, 1]
   });
   // 元素 box1 和 box2 在可视范围达到一半（0.5）和全部（1）的时候分别触发了回调
   intersectionObserver.observe(document.querySelector('#box1')!);

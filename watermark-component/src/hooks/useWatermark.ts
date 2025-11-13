@@ -21,7 +21,8 @@ function useWatermark (params: WatermarkOptions) {
   return {
     generateWatermark: (newOptions: Partial<WatermarkOptions>) => {
       setOptions(merge({}, options, newOptions))
-    }
+    },
+    destory: () => {}
   }
 }
 

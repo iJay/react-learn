@@ -50,7 +50,7 @@ function MyLazyLoad (props: MyLazyLoadProps) {
   useEffect(() => {
     const options = {
       rootMargin: typeof offset === 'number' ? `${offset}px` : offset || '0px',
-      threshold: 0
+      threshold: 0 // 一进入可视区域就触发
     }
 
     elementObserver.current = new IntersectionObserver(lazyLoadHandler, options)

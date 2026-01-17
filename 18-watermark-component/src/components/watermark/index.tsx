@@ -4,7 +4,7 @@ import useWatermark from "../../hooks/useWatermark";
 export interface WatermarkProps extends PropsWithChildren{
   style?: CSSProperties;  // 外部容器div样式
   className?: string; // 外部容器div class
-  zIndex?: string | number; // 外部容器div 的z-index值
+  zIndex?: string | number; // 水印div的z-index值
   getContainer?: () => HTMLElement; // 指定的外部容器div
   content?: string | string[]; // 指定的水印中的文字内容
   image?: string; // 指定的水印中绘制的图片
@@ -39,7 +39,7 @@ function Watermark (props: WatermarkProps) {
 
   const getContainer = useCallback(() => {
     return props.getContainer ? props.getContainer() : containerRef.current!
-  }, [containerRef.current, props.getContainer])
+  }, [props.getContainer])
 
   const { generateWatermark } = useWatermark({
     zIndex,

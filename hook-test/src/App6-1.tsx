@@ -17,7 +17,7 @@ function Bbb (props: BbbProps) {
 }
 
 const MemoBbb = memo(Bbb)
-// memo的作用就是只有包裹组件的props发生变化时，组件才会重新渲染
+// memo的作用就是只有被包裹组件的props发生变化时，组件才会重新渲染
 
 function App () {
   const [, setNum] = useState(0)
@@ -30,7 +30,7 @@ function App () {
   // }
 
   const callbackMemoFn = useCallback(function () {}, [])
-  // 这里的依赖项未空数组，所以函数引用不会变化，不会导致Bbb组件的重新渲染
+  // 这里的依赖项为空数组，所以函数引用不会变化，不会导致Bbb组件的重新渲染
   // 如果这里依赖项不为空数组，则当依赖项发生变化时，函数引用会变化，会导致Bbb组件的重新渲染
 
   const memoCount = useMemo(() => {

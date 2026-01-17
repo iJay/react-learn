@@ -154,12 +154,18 @@ async function getCanvasData (options: Required<WatermarkOptions>): Promise<{ wi
         let { width, height } = options
         if (!width || !height) {
           if (width) {
-            height = (imgEle.height / imgEle.width) * + width
+            // 等比例缩放（保持纵横比）计算公式
+            // 这里的+width 中一元运算符+的作用把 width 强制转成 Number 类型
+            // 确保参与运算的是数字 等同于 Number(width)
+            // * +width按新的目标宽度缩放
+            height = (imgEle.height / imgEle.width) * +width
           } else {
             width = (imgEle.width / imgEle.height) * +height
           }
         }
         configCanvas({ width, height })
+        // -width / 2 源 image 的左上角在目标画布上 X 轴坐标
+        // -height / 2 源 image 的左上角在目标画布上 Y 轴坐标
         context?.drawImage(imgEle, -width / 2, -height / 2, width, height)
         return resolve({ base64Url: canvas.toDataURL(), width, height})
       }
@@ -187,7 +193,7 @@ function useWatermark (params: WatermarkOptions) {
   const watermarkDiv = useRef<HTMLDivElement>(null)
 
   // 设置一个Observer监听器 监听水印元素删除
-  const mutationObserver = useRef<MutationObserver>()
+  const mutationObserver = useRef<MutationObserver>(null)
 
   function drawWatermark  () {
     if (!container) return
